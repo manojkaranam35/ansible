@@ -1,0 +1,39 @@
+---
+- name: manoj
+  hosts: local
+  connection: local 
+
+  tasks:
+  - name: hello from manoj to hari
+    ansible.builtin.debug:
+     msg: "hello from manoj to hari"
+
+  - name: hello from manoj to rakesh
+    ansible.builtin.debug:
+     msg: "hello from manoj to rakesh"
+
+
+- name: sai 
+  hosts: local
+  connection: local 
+
+  tasks:
+  - name: hello from sai to hari
+    ansible.builtin.debug:
+     msg: "hello from sai to hari"
+
+  - name: hello from sai to rakesh
+    ansible.builtin.debug:
+     msg: "hello from sai to rakesh"
+
+
+- name: httpd install
+  hosts: frontend
+  become: true
+
+  tasks:
+  - name: install httpd
+    ansible.builtin.package:
+     name: httpd
+     state: present
+     
